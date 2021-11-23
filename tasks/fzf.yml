@@ -1,0 +1,3 @@
+- name: Install fzf
+  apt: name=fzf
+  tags: fzf

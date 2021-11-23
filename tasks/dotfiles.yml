@@ -1,0 +1,17 @@
+- name: Installing stow
+  apt: name=stow
+  tags:
+    - dotfiles
+
+- name: Cloning .dotfiles
+  git:
+    repo: git@github.com:thomashoggard/.dotfiles.git
+    dest: ~/.dotfiles
+    accept_hostkey: yes
+  tags:
+    - dotfiles
+
+- name: Stow dotfiles
+  shell: cd $HOME/.dotfiles && ./ubuntu
+  tags:
+    - dotfiles

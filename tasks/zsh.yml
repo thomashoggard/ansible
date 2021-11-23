@@ -1,0 +1,17 @@
+- name: Install zsh
+  apt: name=zsh
+  tags: zsh
+
+- name: Change shell
+  shell: chsh -s `which zsh`
+  tags: zsh
+
+- name: Download Oh My Zsh!
+  get_url:
+    url: https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+    dest: /tmp/install-zsh.sh
+  tags: zsh
+
+- name: Install Oh My Zsh!
+  script: /tmp/install-zsh.sh
+  tags: zsh
