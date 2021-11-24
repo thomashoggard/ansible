@@ -1,9 +1,13 @@
 - name: Install zsh
   apt: name=zsh
+  when:
+    - ansible_facts['os_family']== "Debian"
   tags: zsh
 
 - name: Change shell
   shell: chsh -s `which zsh`
+  when:
+    - ansible_facts['os_family']== "Debian"
   tags: zsh
 
 - name: Download Oh My Zsh!

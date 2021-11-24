@@ -1,16 +1,32 @@
+# ubuntu
 - name: Install git
   apt: name=git
+  when:
+    - ansible_facts['os_family']== "Debian"
   tags: git
 
+# osx
+- name: Install git
+  homebrew:
+    name: git
+  when:
+    - ansible_facts['os_family']== "Darwin"
+  tags: git
+
+# ubuntu
 - name: gh cli archive-keyring.gpg download
   get_url:
     url: https://cli.github.com/packages/githubcli-archive-keyring.gpg
     dest: /usr/share/keyrings/githubcli-archive-keyring.gpg
+  when:
+    - ansible_facts['os_family']== "Debian"
   tags: gh-cli
 
 - name: gh cli PPA setting
   become: true
   shell: echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee /etc/apt/sources.list.d/github-cli.list
+  when:
+    - ansible_facts['os_family']== "Debian"
   tags: gh-cli
 
 - name: gh cli apt installation
@@ -18,4 +34,14 @@
   apt:
     update_cache: yes
     name: gh
+  when:
+    - ansible_facts['os_family']== "Debian"
   tags: gh-cli
+
+# osx
+- name: Install gh
+  homebrew:
+    name: gh
+  when:
+    - ansible_facts['os_family']== "Darwin"
+  tags: gh

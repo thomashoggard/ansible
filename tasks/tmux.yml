@@ -1,5 +1,16 @@
+# ubuntu
 - name: Install tmux
   apt: name=tmux
+  when:
+    - ansible_facts['os_family']== "Debian"
+  tags: tmux
+
+# osx
+- name: Install tmux
+  homebrew:
+    name: tmux
+  when:
+    - ansible_facts['os_family']== "Darwin"
   tags: tmux
 
 - name: Install tpm

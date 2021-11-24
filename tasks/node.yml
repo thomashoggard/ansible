@@ -1,6 +1,17 @@
+# ubuntu
 - name: Install node
   apt:
     name: ["nodejs", "npm"]
+  when:
+    - ansible_facts['os_family']== "Debian"
+  tags: node
+
+# osx
+- name: Install node
+  homebrew:
+    name: node
+  when:
+    - ansible_facts['os_family']== "Darwin"
   tags: node
 
 - name: Install n
