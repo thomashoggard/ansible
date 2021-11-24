@@ -2,7 +2,15 @@
 - name: Install fzf
   apt: name=fzf
   when:
-    - ansible_facts['os_family']== "Debian"
+    - ansible_facts['os_family'] == "Debian"
+  tags: fzf
+
+# arch
+- name: Install fzf
+  pacman:
+    name: fzf
+  when:
+    - ansible_facts['os_family'] == "Archlinux"
   tags: fzf
 
 # osx
@@ -10,5 +18,5 @@
   homebrew:
     name: fzf
   when:
-    - ansible_facts['os_family']== "Darwin"
+    - ansible_facts['os_family'] == "Darwin"
   tags: fzf

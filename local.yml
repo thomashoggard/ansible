@@ -1,9 +1,12 @@
 - hosts: localhost
   become: true
   pre_tasks:
+    # ubuntu
     - name: Update cache
       apt:
         update_cache: true
+      when:
+        - ansible_facts['os_family'] == "Debian"
       tags:
         - git
         - gh-cli
@@ -12,10 +15,22 @@
         - tmux
         - fzf
         - node
+    # osx
+    - name: Update cache
+      homebrew:
+        update_homebrew: yes
+      when:
+        - ansible_facts['os_family'] == "Darwin"
+    # arch
+    - name: Update cache
+      pacman:
+        update_cache: yes
+      when:
+        - ansible_facts['os_family'] == "Archlinux"
   tasks:
     - include: tasks/homebrew.yml
       when:
-        - ansible_facts['os_family']== "Darwin"
+        - ansible_facts['os_family'] == "Darwin"
     - include: tasks/git.yml
     - include: tasks/dotfiles.yml
     - include: tasks/zsh.yml

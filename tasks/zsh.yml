@@ -1,13 +1,20 @@
+# ubuntu
 - name: Install zsh
   apt: name=zsh
   when:
-    - ansible_facts['os_family']== "Debian"
+    - ansible_facts['os_family'] == "Debian"
+  tags: zsh
+
+# arch
+- name: Install zsh
+  pacman:
+    name: zsh
+  when:
+    - ansible_facts['os_family'] == "Archlinux"
   tags: zsh
 
 - name: Change shell
   shell: chsh -s `which zsh`
-  when:
-    - ansible_facts['os_family']== "Debian"
   tags: zsh
 
 - name: Download Oh My Zsh!

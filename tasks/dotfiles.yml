@@ -2,7 +2,17 @@
 - name: Installing stow
   apt: name=stow
   when:
-    - ansible_facts['os_family']== "Debian"
+    - ansible_facts['os_family'] == "Debian"
+  tags:
+    - stow
+    - dotfiles
+
+# arch
+- name: Install fzf
+  pacman:
+    name: stow
+  when:
+    - ansible_facts['os_family'] == "Archlinux"
   tags:
     - stow
     - dotfiles
