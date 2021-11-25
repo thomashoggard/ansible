@@ -38,3 +38,4 @@
     - include: tasks/fzf.yml
     - include: tasks/node.yml
     - include: tasks/cheatsheet.yml
+    - include: tasks/todoist.yml
