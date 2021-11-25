@@ -37,3 +37,4 @@
     - include: tasks/tmux.yml
     - include: tasks/fzf.yml
     - include: tasks/node.yml
+    - include: tasks/cheatsheet.yml

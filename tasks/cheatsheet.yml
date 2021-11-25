@@ -1,0 +1,13 @@
+- name: Install tldr
+  npm:
+    name: tldr
+    global: true
+  tags:
+    - tldr
+    - cheatsheet
+
+- name: Update tldr cache
+  shell: tldr --update
+  tags:
+    - tldr
+    - cheatsheet
