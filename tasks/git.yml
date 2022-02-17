@@ -61,3 +61,21 @@
   when:
     - ansible_facts['os_family'] == "Darwin"
   tags: gh
+
+# Install Delta
+
+# arch
+- name: Install delta
+  pacman:
+    name: git-delta
+  when:
+    - ansible_facts['os_family'] == "Archlinux"
+  tags: delta
+
+# osx
+- name: Install delta
+  homebrew:
+    name: git-delta
+  when:
+    - ansible_facts['os_family'] == "Darwin"
+  tags: delta
