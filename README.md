@@ -7,6 +7,6 @@
 
 ## Apps that need to be added
 
-## nvim-markdown-preview
+### nvim-markdown-preview
 - live-server, `npm install -g live-server`
 - pandoc, `brew install pandoc`
