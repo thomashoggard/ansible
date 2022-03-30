@@ -4,3 +4,7 @@
 ## Getting Started
 
 - Install ansible playbook
+
+## Apps that need to be added
+- live-server, `npm install -g live-server`
+- pandoc, `brew install pandoc`
