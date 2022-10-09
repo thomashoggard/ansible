@@ -1,4 +1,4 @@
-# ansible
+# Ansible
 ⚡ Bootstrap script to instantly setup a new machine
 
 ## Getting Started
