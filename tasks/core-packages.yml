@@ -1,0 +1,49 @@
+- name: Install base aur packages
+  kewlfft.aur.aur:
+    name:
+      - 1password
+      - obsidian-appimage
+      - timeshift
+      - timeshift-autosnap
+      - google-chrome
+      - protonvpn
+      - nasc
+
+- name: Install dev tools from aur
+  kewlfft.aur.aur:
+    name:
+      - nerd-fonts-complete
+      - nvim-packer-git
+      - postman-bin
+      - pscale-cli
+
+- name: Install community packages
+  pacman:
+    name:
+      - kitty
+      - neovim
+      - fzf
+      - meld
+
+- name: Install docker
+  pacman:
+    name:
+      - docker
+  become: true
+
+- name: Install dbeaver
+  pacman:
+    name:
+      - dbeaver
+  become: true
+
+- name: Install vlc
+  pacman:
+    name:
+      - vlc
+  become: true
+
+- name: Install gnome specific tools
+  kewlfft.aur.aur:
+    name:
+      - guake

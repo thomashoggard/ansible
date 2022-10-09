@@ -1,33 +1,11 @@
-# ubuntu
-- name: Install node
-  apt:
-    name: ["nodejs", "npm"]
-  when:
-    - ansible_facts['os_family'] == "Debian"
-  tags: node
-
-# arch
 - name: Install npm
   pacman:
     name: npm
-  when:
-    - ansible_facts['os_family'] == "Archlinux"
-  tags: node
-
-# osx
-- name: Install node
-  homebrew:
-    name: node
-  when:
-    - ansible_facts['os_family'] == "Darwin"
-  tags: node
 
 - name: Install n
   npm:
     name: n
     global: true
-  tags: node
 
 - name: n lts
   shell: n lts
-  tags: node

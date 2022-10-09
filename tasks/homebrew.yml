@@ -1,9 +1,0 @@
-- name: Download Homebrew
-  get_url:
-    url: https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh
-    dest: /tmp/install-homebrew.sh
-  tags: homebrew
-
-- name: Install Homebrew
-  script: /tmp/install-homebrew.sh
-  tags: homebrew

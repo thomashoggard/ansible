@@ -1,32 +1,13 @@
-# ubuntu
-- name: Install tmux
-  apt: name=tmux
-  when:
-    - ansible_facts['os_family'] == "Debian"
-  tags: tmux
-
-# arch
 - name: Install tmux
   pacman:
     name: tmux
-  when:
-    - ansible_facts['os_family'] == "Archlinux"
-  tags: tmux
-
-# osx
-- name: Install tmux
-  homebrew:
-    name: tmux
-  when:
-    - ansible_facts['os_family'] == "Darwin"
-  tags: tmux
 
 - name: Install tpm
   git:
-    repo: https://github.com/tmux-plugins/tpm
-    dest: ~/.tmux/plugins/tpm
-  tags: tmux
+    repo: 'https://github.com/tmux-plugins/tpm'
+    dest: "{{ lookup('env', 'HOME') }}/.tmux/plugins/tpm"
 
-- name: Install tmux plugins
-  shell: ~/.tmux/plugins/tpm/bin/install_plugins
-  tags: tmux
+      # TODO: I think I have to do something like after installing tmp in order for the TMUX_PLUGIN_MANAGER_PATH to be present
+      # - name: Install tmux plugins
+      #  shell: "~/.tmux/plugins/tpm/bin/install_plugins"
+      #  become_user: thoggard

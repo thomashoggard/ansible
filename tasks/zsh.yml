@@ -1,28 +1,22 @@
-# ubuntu
-- name: Install zsh
-  apt: name=zsh
-  when:
-    - ansible_facts['os_family'] == "Debian"
-  tags: zsh
-
-# arch
 - name: Install zsh
   pacman:
     name: zsh
-  when:
-    - ansible_facts['os_family'] == "Archlinux"
-  tags: zsh
 
-- name: Change shell
-  shell: chsh -s `which zsh`
-  tags: zsh
+- name: Change shell to zsh
+  shell: "chsh -s $(which zsh) {{ lookup('env', 'USER') }}"
+  become: true
+
+- name: Check if oh-my-zsh is already installed
+  stat:
+    path: ~/.oh-my-zsh
+  register: oh_my_stats
 
 - name: Download Oh My Zsh!
   get_url:
     url: https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh
     dest: /tmp/install-zsh.sh
-  tags: zsh
+  when: oh_my_stats.stat.exists == False
 
 - name: Install Oh My Zsh!
   script: /tmp/install-zsh.sh
-  tags: zsh
+  when: oh_my_stats.stat.exists == False

@@ -1,41 +1,16 @@
-# ubuntu
 - name: Installing stow
-  apt: name=stow
-  when:
-    - ansible_facts['os_family'] == "Debian"
-  tags:
-    - stow
-    - dotfiles
-
-# arch
-- name: Install fzf
   pacman:
     name: stow
-  when:
-    - ansible_facts['os_family'] == "Archlinux"
-  tags:
-    - stow
-    - dotfiles
 
-# osx
-- name: Installing stow
-  homebrew:
-    name: stow
-  when:
-    - ansible_facts['os_family']== "Darwin"
-  tags:
-    - stow
-    - dotfiles
-
-- name: Cloning .dotfiles
-  git:
-    repo: git@github.com:thomashoggard/.dotfiles.git
-    dest: ~/.dotfiles
-    accept_hostkey: yes
-  tags:
-    - dotfiles
-
-- name: Stow dotfiles
-  shell: cd $HOME/.dotfiles && ./ubuntu
-  tags:
-    - dotfiles
+# TODO: Cloning will try to use http instead of ssh since git config doesn't have a crednetial manager I believe
+# - name: Cloning .dotfiles
+#   ansible.builtin.git:
+#     repo: 'git@github.com:thomashoggard/.dotfiles.git'
+#     dest: "{{ lookup('env', 'HOME') }}/.dotfiles"
+#     recursive: yes
+#     update: yes
+#     accept_hostkey: yes
+#     version: main
+# 
+# - name: Stow dotfiles
+#   shell: cd $HOME/.dotfiles && install.sh

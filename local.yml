@@ -1,41 +1,18 @@
 - hosts: localhost
-  become: true
+  vars:
+    source_key: "./.ssh/id_ed25519"
+    dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_ed25519"
   pre_tasks:
-    # ubuntu
-    - name: Update cache
-      apt:
-        update_cache: true
-      when:
-        - ansible_facts['os_family'] == "Debian"
-      tags:
-        - git
-        - gh-cli
-        - dotfiles
-        - zsh
-        - tmux
-        - fzf
-        - node
-    # osx
-    - name: Update cache
-      homebrew:
-        update_homebrew: yes
-      when:
-        - ansible_facts['os_family'] == "Darwin"
-    # arch
-    - name: Update cache
+    - name: pre-run | update package cache (arch)
+      become: true
       pacman:
         update_cache: yes
-      when:
-        - ansible_facts['os_family'] == "Archlinux"
   tasks:
-    - include: tasks/homebrew.yml
-      when:
-        - ansible_facts['os_family'] == "Darwin"
-    - include: tasks/git.yml
-    - include: tasks/dotfiles.yml
-    - include: tasks/zsh.yml
-    - include: tasks/tmux.yml
-    - include: tasks/fzf.yml
-    - include: tasks/node.yml
-    - include: tasks/cheatsheet.yml
-    - include: tasks/todoist.yml
+    - include_tasks: tasks/core-packages.yml
+    - include_tasks: tasks/ssh.yml
+    - include_tasks: tasks/git.yml
+    - include_tasks: tasks/dotfiles.yml
+    - include_tasks: tasks/zsh.yml
+    - include_tasks: tasks/tmux.yml
+    # - include_tasks: tasks/fzf.yml
+    - include_tasks: tasks/node.yml

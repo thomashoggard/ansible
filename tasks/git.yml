@@ -1,81 +1,11 @@
-# ubuntu
-- name: Install git
-  apt: name=git
-  when:
-    - ansible_facts['os_family'] == "Debian"
-  tags: git
-
-# arch
 - name: Install git
   pacman:
     name: git
-  when:
-    - ansible_facts['os_family'] == "Archlinux"
-  tags: git
 
-# osx
-- name: Install git
-  homebrew:
-    name: git
-  when:
-    - ansible_facts['os_family'] == "Darwin"
-  tags: git
-
-# ubuntu
-- name: gh cli archive-keyring.gpg download
-  get_url:
-    url: https://cli.github.com/packages/githubcli-archive-keyring.gpg
-    dest: /usr/share/keyrings/githubcli-archive-keyring.gpg
-  when:
-    - ansible_facts['os_family'] == "Debian"
-  tags: gh-cli
-
-- name: gh cli PPA setting
-  become: true
-  shell: echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee /etc/apt/sources.list.d/github-cli.list
-  when:
-    - ansible_facts['os_family'] == "Debian"
-  tags: gh-cli
-
-- name: gh cli apt installation
-  become: true
-  apt:
-    update_cache: yes
-    name: gh
-  when:
-    - ansible_facts['os_family'] == "Debian"
-  tags: gh-cli
-
-# arch
 - name: Install gh
   pacman:
     name: github-cli
-  when:
-    - ansible_facts['os_family'] == "Archlinux"
-  tags: gh
 
-# osx
-- name: Install gh
-  homebrew:
-    name: gh
-  when:
-    - ansible_facts['os_family'] == "Darwin"
-  tags: gh
-
-# Install Delta
-
-# arch
 - name: Install delta
   pacman:
     name: git-delta
-  when:
-    - ansible_facts['os_family'] == "Archlinux"
-  tags: delta
-
-# osx
-- name: Install delta
-  homebrew:
-    name: git-delta
-  when:
-    - ansible_facts['os_family'] == "Darwin"
-  tags: delta
