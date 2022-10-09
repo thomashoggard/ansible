@@ -7,4 +7,8 @@
 - Install ansible galaxy modules
 - Execute `./run.sh`
 
-## Apps that need to be added
+
+## TODO
+
+- Setup SSH to enable git cloning .dotfile repo
+- Fix tpm for tmux
