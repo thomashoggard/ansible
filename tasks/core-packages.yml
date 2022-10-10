@@ -24,6 +24,9 @@
       - neovim
       - fzf
       - meld
+      - xclip
+      - ripgrep
+      - fd
 
 - name: Install docker
   pacman:
