@@ -27,6 +27,9 @@
       - xclip
       - ripgrep
       - fd
+      - papirus-icon-theme
+      - catppuccin-gtk-theme-mocha
+      - qbittorrent
 
 - name: Install docker
   pacman:
