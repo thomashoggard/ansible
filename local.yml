@@ -14,5 +14,5 @@
     - include_tasks: tasks/dotfiles.yml
     - include_tasks: tasks/zsh.yml
     - include_tasks: tasks/tmux.yml
-    # - include_tasks: tasks/fzf.yml
     - include_tasks: tasks/node.yml
+    - include_tasks: tasks/docker.yml

@@ -8,14 +8,13 @@
       - google-chrome
       - protonvpn
       - nasc
-
-- name: Install dev tools from aur
-  kewlfft.aur.aur:
-    name:
-      - nerd-fonts-complete
+      - guake
       - nvim-packer-git
       - postman-bin
       - pscale-cli
+      - catppuccin-gtk-theme-mocha
+      - brave-bin
+      - tidal-hifi-bin
 
 - name: Install community packages
   pacman:
@@ -28,28 +27,11 @@
       - ripgrep
       - fd
       - papirus-icon-theme
-      - catppuccin-gtk-theme-mocha
+      - ttf-nerd-fonts-symbols-common
+      - ttf-nerd-fonts-symbols-2048-em-mono
+      - ttf-nerd-fonts-symbols-2048-em
+      - ttf-jetbrains-mono
       - qbittorrent
-
-- name: Install docker
-  pacman:
-    name:
-      - docker
-  become: true
-
-- name: Install dbeaver
-  pacman:
-    name:
       - dbeaver
-  become: true
-
-- name: Install vlc
-  pacman:
-    name:
       - vlc
   become: true
-
-- name: Install gnome specific tools
-  kewlfft.aur.aur:
-    name:
-      - guake

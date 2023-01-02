@@ -1,6 +1,7 @@
 - name: Installing stow
   pacman:
     name: stow
+  become: true
 
 # TODO: Cloning will try to use http instead of ssh since git config doesn't have a crednetial manager I believe
 # - name: Cloning .dotfiles

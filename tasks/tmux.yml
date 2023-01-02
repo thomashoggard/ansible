@@ -1,6 +1,7 @@
 - name: Install tmux
   pacman:
     name: tmux
+  become: true
 
 - name: Install tpm
   git:

@@ -2,10 +2,7 @@
   pacman:
     name: git
 
-- name: Install gh
-  pacman:
-    name: github-cli
-
 - name: Install delta
   pacman:
     name: git-delta
+  become: true

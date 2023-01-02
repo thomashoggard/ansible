@@ -5,7 +5,8 @@
 
 - Install ansible playbook
 - Install ansible galaxy modules
-- Execute `./run.sh`
+`ansible-galaxy install -r requirements.yml`
+- Execute `./run.sh`, DO NOT use sudo
 
 
 ## TODO
