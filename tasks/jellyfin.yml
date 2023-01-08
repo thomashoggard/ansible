@@ -1,0 +1,17 @@
+# Jellyfin installation is untested
+# TODO: Add firewall exception to open 8096
+
+- name: Install jellyfin
+  kewlfft.aur.aur:
+    name:
+      - jellyfin
+
+- name: Start jellyfin service
+  systemd:
+    name: jellyfin.service
+    state: started
+    enabled: true
+
+- name: Grant read permissions to media drive
+  shell: "setfacl -m user:jellyfin:rxw {{ lookup('env', 'USER') }}"
+  become: true

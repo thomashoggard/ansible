@@ -15,6 +15,7 @@
       - catppuccin-gtk-theme-mocha
       - brave-bin
       - tidal-hifi-bin
+      - jellyfin
 
 - name: Install community packages
   pacman:
@@ -34,4 +35,5 @@
       - qbittorrent
       - dbeaver
       - vlc
+      - noto-fonts-emoji
   become: true
