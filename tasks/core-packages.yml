@@ -36,4 +36,5 @@
       - dbeaver
       - vlc
       - noto-fonts-emoji
+      - gparted
   become: true
