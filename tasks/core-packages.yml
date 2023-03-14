@@ -16,6 +16,7 @@
       - brave-bin
       - tidal-hifi-bin
       - jellyfin
+      - ticktick
 
 - name: Install community packages
   pacman:
