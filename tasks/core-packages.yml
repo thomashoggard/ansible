@@ -17,6 +17,7 @@
       - tidal-hifi-bin
       - jellyfin
       - ticktick
+      - veracrypt-git
 
 - name: Install community packages
   pacman:
