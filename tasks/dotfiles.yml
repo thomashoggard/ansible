@@ -2,8 +2,7 @@
   pacman:
     name: stow
   become: true
-
-# TODO: Cloning will try to use http instead of ssh since git config doesn't have a crednetial manager I believe
+# TODO: Cloning will try to use http instead of ssh since git config doesn't have a credential manager I believe
 # - name: Cloning .dotfiles
 #   ansible.builtin.git:
 #     repo: 'git@github.com:thomashoggard/.dotfiles.git'
@@ -12,6 +11,6 @@
 #     update: yes
 #     accept_hostkey: yes
 #     version: main
-# 
+#
 # - name: Stow dotfiles
 #   shell: cd $HOME/.dotfiles && install.sh

@@ -1,0 +1,13 @@
+- name: Install qbittorrent
+  pacman:
+    name: qbittorrent
+
+- name: Install jackett
+  kewlfft.aur.aur:
+    name: jackett
+
+- name: Start jackett service
+  systemd:
+    name: jackett.service
+    state: started
+    enabled: true

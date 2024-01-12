@@ -9,15 +9,13 @@
       - protonvpn
       - nasc
       - guake
-      - nvim-packer-git
       - postman-bin
-      - pscale-cli
       - catppuccin-gtk-theme-mocha
       - brave-bin
       - tidal-hifi-bin
       - jellyfin
-      - ticktick
-      - veracrypt-git
+      - another-redis-desktop-manager-appimage
+      - cryptomator-bin
 
 - name: Install community packages
   pacman:
@@ -34,9 +32,14 @@
       - ttf-nerd-fonts-symbols-2048-em-mono
       - ttf-nerd-fonts-symbols-2048-em
       - ttf-jetbrains-mono
-      - qbittorrent
       - dbeaver
       - vlc
       - noto-fonts-emoji
       - gparted
+      - discord
+      - gnucash
+      - jq
+      - lazygit
+      - pnpm
+      - syncthing
   become: true

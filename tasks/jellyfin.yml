@@ -1,6 +1,4 @@
 # Jellyfin installation is untested
-# TODO: Add firewall exception to open 8096
-
 - name: Install jellyfin
   kewlfft.aur.aur:
     name:
