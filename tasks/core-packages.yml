@@ -41,5 +41,4 @@
       - jq
       - lazygit
       - pnpm
-      - syncthing
   become: true

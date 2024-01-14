@@ -1,3 +1,9 @@
 - name: Install syncthing
   pacman:
     name: syncthing
+
+- name: Start syncthing service
+  systemd:
+    name: syncthing@thoggard.service
+    state: started
+    enabled: true
