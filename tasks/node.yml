@@ -1,9 +1,10 @@
 - name: Install npm
-  pacman:
+  become: true
+  package:
     name:
       - npm
       - nvm
-  become: true
+    state: present
 
 - name: Install node
   shell: "source /usr/share/nvm/init-nvm.sh && nvm install node"

@@ -1,7 +1,8 @@
 - name: Installing stow
-  pacman:
-    name: stow
   become: true
+  package:
+    name: stow
+    state: present
 # TODO: Cloning will try to use http instead of ssh since git config doesn't have a credential manager I believe
 # - name: Cloning .dotfiles
 #   ansible.builtin.git:

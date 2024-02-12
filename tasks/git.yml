@@ -1,8 +1,8 @@
 - name: Install git
-  pacman:
+  package:
     name: git
 
 - name: Install delta
-  pacman:
-    name: git-delta
   become: true
+  package:
+    name: git-delta

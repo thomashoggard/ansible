@@ -2,11 +2,11 @@
   vars:
     source_key: "./.ssh/id_ed25519"
     dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_ed25519"
-  pre_tasks:
-    - name: pre-run | update package cache (arch)
-      become: true
-      pacman:
-        update_cache: yes
+  # pre_tasks:
+  #   - name: pre-run | update package cache (arch)
+  #     become: true
+  #     pacman:
+  #       update_cache: yes
   tasks:
     - include_tasks: tasks/core-packages.yml
     - include_tasks: tasks/ssh.yml
@@ -16,5 +16,5 @@
     - include_tasks: tasks/tmux.yml
     - include_tasks: tasks/node.yml
     - include_tasks: tasks/docker.yml
-    - include_tasks: tasks/qbittorrent.yml
+    # - include_tasks: tasks/qbittorrent.yml
     - include_tasks: tasks/syncthing.yml

@@ -1,5 +1,6 @@
-- name: Install base aur packages
-  kewlfft.aur.aur:
+- name: Install base packages
+  become: true
+  package:
     name:
       - 1password
       - obsidian-appimage
@@ -7,38 +8,25 @@
       - timeshift-autosnap
       - google-chrome
       - protonvpn
-      - nasc
-      - guake
-      - postman-bin
-      - catppuccin-gtk-theme-mocha
-      - brave-bin
-      - tidal-hifi-bin
-      - jellyfin
+      # - postman-bin
+      # - brave-bin
+      # - tidal-hifi-bin
+      # - cryptomator-bin
+      # - postman
+      # - brave
+      # - tidal-hifi
+      # - cryptomator
       - another-redis-desktop-manager-appimage
-      - cryptomator-bin
-
-- name: Install community packages
-  pacman:
-    name:
-      - kitty
+      - alacritty
       - neovim
       - fzf
-      - meld
-      - xclip
       - ripgrep
       - fd
-      - papirus-icon-theme
-      - ttf-nerd-fonts-symbols-common
-      - ttf-nerd-fonts-symbols-2048-em-mono
-      - ttf-nerd-fonts-symbols-2048-em
-      - ttf-jetbrains-mono
       - dbeaver
       - vlc
-      - noto-fonts-emoji
-      - gparted
-      - discord
       - gnucash
       - jq
       - lazygit
       - pnpm
-  become: true
+    # name: 1password
+    state: present
