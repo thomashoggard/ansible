@@ -2,13 +2,13 @@
   become: true
   package:
     name: qbittorrent
-    state: present
+    state: latest
 
 - name: Install jackett
   become: true
   package:
     name: jackett
-    state: present
+    state: latest
 
 - name: Start jackett service
   systemd:

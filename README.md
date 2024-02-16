@@ -13,3 +13,8 @@
 
 - Setup SSH to enable git cloning .dotfile repo
 - Fix tpm for tmux
+
+## How to Test
+
+1. Run `./build-dockers.sh`
+2. Run `./start-container.sh`

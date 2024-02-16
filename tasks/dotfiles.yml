@@ -1,17 +1,28 @@
+- name: Cloning .dotfiles
+  ansible.builtin.git:
+    repo: 'git@github.com:thomashoggard/.dotfiles.git'
+    dest: "{{ lookup('env', 'HOME') }}/.dotfiles"
+    accept_hostkey: yes
+    version: main
+
+
 - name: Installing stow
   become: true
   package:
     name: stow
-    state: present
-# TODO: Cloning will try to use http instead of ssh since git config doesn't have a credential manager I believe
-# - name: Cloning .dotfiles
-#   ansible.builtin.git:
-#     repo: 'git@github.com:thomashoggard/.dotfiles.git'
-#     dest: "{{ lookup('env', 'HOME') }}/.dotfiles"
-#     recursive: yes
-#     update: yes
-#     accept_hostkey: yes
-#     version: main
-#
-# - name: Stow dotfiles
-#   shell: cd $HOME/.dotfiles && install.sh
+    state: latest
+
+- name: Stow dotfiles
+  shell: "cd $HOME/.dotfiles && ./install.sh"
+
+- name: Stow personal dotfiles
+  tags: 
+    - never
+    - personal
+  shell: "cd $HOME/.dotfiles && ./install-personal.sh"
+
+- name: Stow work dotfiles
+  tags: 
+    - never
+    - work
+  shell: "cd $HOME/.dotfiles && ./install-league.sh"

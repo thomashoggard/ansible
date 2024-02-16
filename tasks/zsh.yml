@@ -2,7 +2,7 @@
   become: true
   package:
     name: zsh
-    state: present
+    state: latest
 
 - name: Change shell to zsh
   shell: "chsh -s $(which zsh) {{ lookup('env', 'USER') }}"

@@ -1,0 +1,18 @@
+- name: Enable lazygit copr repo
+  tags: 
+    - fedora
+  become: true
+  community.general.copr:
+    state: enabled
+    name: atim/lazygit
+
+- name: Install terminal apps
+  become: true
+  package:
+    name:
+      - alacritty
+      - neovim
+      - fzf
+      - ripgrep
+      - jq
+    state: latest

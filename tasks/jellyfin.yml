@@ -4,7 +4,7 @@
   package:
     name:
       - jellyfin
-    state: present
+    state: latest
 
 - name: Start jellyfin service
   systemd:

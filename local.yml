@@ -1,20 +1,16 @@
 - hosts: localhost
-  vars:
-    source_key: "./.ssh/id_ed25519"
-    dest_key: "{{ lookup('env', 'HOME') }}/.ssh/id_ed25519"
-  # pre_tasks:
-  #   - name: pre-run | update package cache (arch)
-  #     become: true
-  #     pacman:
-  #       update_cache: yes
+  pre_tasks:
+    - import_tasks: tasks/update-system.yml
   tasks:
-    - include_tasks: tasks/core-packages.yml
-    - include_tasks: tasks/ssh.yml
-    - include_tasks: tasks/git.yml
-    - include_tasks: tasks/dotfiles.yml
-    - include_tasks: tasks/zsh.yml
-    - include_tasks: tasks/tmux.yml
-    - include_tasks: tasks/node.yml
-    - include_tasks: tasks/docker.yml
-    # - include_tasks: tasks/qbittorrent.yml
-    - include_tasks: tasks/syncthing.yml
+    - import_tasks: tasks/ssh.yml
+    - import_tasks: tasks/update-ansible-repo-origin.yml
+    - import_tasks: tasks/dotfiles.yml
+    - import_tasks: tasks/git.yml
+    - import_tasks: tasks/zsh.yml
+    - import_tasks: tasks/tmux.yml
+    - import_tasks: tasks/terminal-apps.yml
+    - import_tasks: tasks/node.yml
+    - import_tasks: tasks/docker.yml
+    - import_tasks: tasks/core-packages.yml
+  #   - import_tasks: tasks/qbittorrent.yml
+  #   - import_tasks: tasks/syncthing.yml

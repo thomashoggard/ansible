@@ -2,10 +2,14 @@
   become: true
   package:
     name: syncthing
-    state: present
+    state: latest
 
 - name: Start syncthing service
   systemd:
     name: syncthing@thoggard.service
     state: started
     enabled: true
+
+- name: Add syncthing firewall exception
+
+- Add firewall exception to open 8384 for syncthing

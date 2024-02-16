@@ -4,15 +4,17 @@
     name:
       - docker
       - docker-compose
-    state: present
+    state: latest
 
 - name: Start docker service
+  become: true
   systemd:
     name: docker
     state: started
     enabled: true
 
 - name: Add the current user to the docker group
+  become: true
   user:
     name: "{{ lookup('env', 'USER') }}"
     groups: docker
