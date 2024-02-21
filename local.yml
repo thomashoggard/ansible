@@ -9,6 +9,7 @@
     - import_tasks: tasks/zsh.yml
     - import_tasks: tasks/tmux.yml
     - import_tasks: tasks/terminal-apps.yml
+    - import_tasks: tasks/snapper.yml
     - import_tasks: tasks/node.yml
     - import_tasks: tasks/docker.yml
     - import_tasks: tasks/core-packages.yml
