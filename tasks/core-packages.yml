@@ -1,44 +1,100 @@
-- name: Install base aur packages
-  kewlfft.aur.aur:
+- name: Install Gear Lever (appimage manager)
+  become: true
+  tags: 
+    - gearlever
+  community.general.flatpak:
+    name: 
+      - it.mijorus.gearlever
+    state: present
+
+- name: Install Google Chrome
+  become: true
+  tags: 
+    - chrome
+  community.general.flatpak:
+    name: 
+      - com.google.Chrome
+    state: present
+    
+- name: Install Brave
+  become: true
+  tags: 
+    - brave
+  community.general.flatpak:
+    name: 
+      - com.brave.Browser
+    state: present
+
+- name: Install Proton VPN
+  become: true
+  tags: 
+    - protonvpn
+  community.general.flatpak:
+    name: 
+      - com.protonvpn.www
+    state: present
+
+# - name: Install 1Password
+#   become: true
+#   tags: 
+#     - 1password
+#   community.general.flatpak:
+#     name: 
+#       - https://downloads.1password.com/linux/flatpak/1Password.flatpakref
+#     state: present
+
+- name: Install Obsidian
+  become: true
+  tags: 
+    - obsidian
+  community.general.flatpak:
     name:
-      - 1password
-      - obsidian-appimage
+      - md.obsidian.Obsidian
+    state: present
+
+- name: Install Arch specific packages
+  become: true
+  package:
+    name:
       - timeshift
       - timeshift-autosnap
-      - google-chrome
-      - protonvpn
-      - nasc
-      - guake
-      - postman-bin
-      - catppuccin-gtk-theme-mocha
-      - brave-bin
-      - tidal-hifi-bin
-      - jellyfin
-      - another-redis-desktop-manager-appimage
-      - cryptomator-bin
+    state: latest
+  when: ansible_distribution == "Archlinux"
 
-- name: Install community packages
-  pacman:
-    name:
-      - kitty
-      - neovim
-      - fzf
-      - meld
-      - xclip
-      - ripgrep
-      - fd
-      - papirus-icon-theme
-      - ttf-nerd-fonts-symbols-common
-      - ttf-nerd-fonts-symbols-2048-em-mono
-      - ttf-nerd-fonts-symbols-2048-em
-      - ttf-jetbrains-mono
-      - dbeaver
-      - vlc
-      - noto-fonts-emoji
-      - gparted
-      - discord
-      - gnucash
-      - jq
-      - lazygit
-      - pnpm
+- name: Install GNUCash 
   become: true
+  tags: 
+    - gnucash
+  community.general.flatpak:
+    name: 
+      - org.gnucash.GnuCash
+    state: present
+
+- name: Install VLC 
+  become: true
+  tags: 
+    - vlc
+  community.general.flatpak:
+    name: 
+      - org.videolan.VLC
+    state: present
+
+
+- name: Install Cryptomator 
+  become: true
+  tags: 
+    - cryptomator
+  community.general.flatpak:
+    name: 
+      - org.cryptomator.Cryptomator
+    state: present
+
+
+- name: Install DBeaver 
+  become: true
+  tags: 
+    - dbeaver
+  community.general.flatpak:
+    name: 
+      - io.dbeaver.DBeaverCommunity
+    state: present

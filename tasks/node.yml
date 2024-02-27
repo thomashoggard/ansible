@@ -1,9 +1,21 @@
 - name: Install npm
-  pacman:
-    name:
-      - npm
-      - nvm
   become: true
+  package:
+    name: npm
+    state: latest
 
-- name: Install node
-  shell: "source /usr/share/nvm/init-nvm.sh && nvm install node"
+- name: Install pnpm
+  become: true
+  package:
+    name: pnpm
+    state: latest
+
+- name: Install n (node package manager)
+  become: true
+  community.general.npm:
+    name: n
+    global: true
+
+- name: Install latest version of node using n
+  become: true
+  shell: "n latest"

@@ -1,7 +1,8 @@
 - name: Install zsh
-  pacman:
-    name: zsh
   become: true
+  package:
+    name: zsh
+    state: latest
 
 - name: Change shell to zsh
   shell: "chsh -s $(which zsh) {{ lookup('env', 'USER') }}"

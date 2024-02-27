@@ -1,0 +1,18 @@
+- name: Install Snapper
+  become: true
+  tags: 
+    - snapper
+    - btrfs
+  ansible.builtin.dnf:
+    name: snapper
+    enablerepo: https://download.opensuse.org/repositories/filesystems:snapper/Fedora_38/filesystems:snapper.repo   
+    state: latest
+
+- name: Install Btrfs Assisatnt
+  become: true
+  tags: 
+    - snapper
+    - btrfs
+  package:
+    name: btrfs-assistant
+    state: latest

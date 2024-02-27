@@ -1,8 +1,11 @@
 - name: Install git
-  pacman:
+  become: true
+  package:
     name: git
+    state: latest
 
 - name: Install delta
-  pacman:
-    name: git-delta
   become: true
+  package:
+    name: git-delta
+    state: latest

@@ -1,14 +1,14 @@
 - name: Install tmux
-  pacman:
-    name: tmux
   become: true
+  package:
+    name: tmux
+    state: latest
 
 - name: Install tpm
   git:
-    repo: 'https://github.com/tmux-plugins/tpm'
-    dest: "{{ lookup('env', 'HOME') }}/.tmux/plugins/tpm"
+    repo: "https://github.com/tmux-plugins/tpm"
+    dest:
+      "{{ lookup('env', 'HOME') }}/.tmux/plugins/tpm"
 
-      # TODO: I think I have to do something like after installing tmp in order for the TMUX_PLUGIN_MANAGER_PATH to be present
-      # - name: Install tmux plugins
-      #  shell: "~/.tmux/plugins/tpm/bin/install_plugins"
-      #  become_user: thoggard
+- name: Install tmux plugins
+  shell: "{{ lookup('env', 'HOME') }}/.tmux/plugins/tpm/bin/install_plugins"

@@ -1,8 +1,10 @@
 # Jellyfin installation is untested
 - name: Install jellyfin
-  kewlfft.aur.aur:
+  become: true
+  package:
     name:
       - jellyfin
+    state: latest
 
 - name: Start jellyfin service
   systemd:
