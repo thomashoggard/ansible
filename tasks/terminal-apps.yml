@@ -1,5 +1,5 @@
 - name: Enable lazygit copr repo
-  tags: 
+  tags:
     - fedora
   become: true
   community.general.copr:
@@ -15,4 +15,5 @@
       - fzf
       - ripgrep
       - jq
+      - lazygit
     state: latest

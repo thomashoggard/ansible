@@ -3,11 +3,11 @@
 
 ## Getting Started
 
-- Install ansible playbook
-- Install ansible galaxy modules
-`ansible-galaxy install -r requirements.yml`
-- Execute `./run.sh`, DO NOT use sudo
+1. Install ansible playbook
+2. (arch only Install ansible galaxy modules `ansible-galaxy install -r requirements.yml`
 
+
+- Execute `./run.sh`, DO NOT use sudo
 
 ## TODO
 

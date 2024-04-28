@@ -1,6 +1,6 @@
 - name: Change ansible repo origin from https to ssh
   git_config:
-    repo: 'ansible.git'
+    repo: '.'
     scope: 'local'
     name: 'remote.origin.url'
     value: 'git@github.com:thomashoggard/ansible.git'

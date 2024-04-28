@@ -1,51 +1,51 @@
 - name: Install Gear Lever (appimage manager)
   become: true
-  tags: 
+  tags:
     - gearlever
   community.general.flatpak:
-    name: 
+    name:
       - it.mijorus.gearlever
     state: present
 
 - name: Install Google Chrome
   become: true
-  tags: 
+  tags:
     - chrome
   community.general.flatpak:
-    name: 
+    name:
       - com.google.Chrome
     state: present
-    
+
 - name: Install Brave
   become: true
-  tags: 
+  tags:
     - brave
   community.general.flatpak:
-    name: 
+    name:
       - com.brave.Browser
     state: present
 
 - name: Install Proton VPN
   become: true
-  tags: 
+  tags:
     - protonvpn
   community.general.flatpak:
-    name: 
+    name:
       - com.protonvpn.www
     state: present
 
 # - name: Install 1Password
 #   become: true
-#   tags: 
+#   tags:
 #     - 1password
 #   community.general.flatpak:
-#     name: 
+#     name:
 #       - https://downloads.1password.com/linux/flatpak/1Password.flatpakref
 #     state: present
 
 - name: Install Obsidian
   become: true
-  tags: 
+  tags:
     - obsidian
   community.general.flatpak:
     name:
@@ -61,40 +61,47 @@
     state: latest
   when: ansible_distribution == "Archlinux"
 
-- name: Install GNUCash 
+- name: Install GNUCash
   become: true
-  tags: 
+  tags:
     - gnucash
   community.general.flatpak:
-    name: 
+    name:
       - org.gnucash.GnuCash
     state: present
 
-- name: Install VLC 
+- name: Install VLC
   become: true
-  tags: 
+  tags:
     - vlc
   community.general.flatpak:
-    name: 
+    name:
       - org.videolan.VLC
     state: present
 
-
-- name: Install Cryptomator 
+- name: Tidal Hi-Fi
   become: true
-  tags: 
+  tags:
+    - tidal
+  community.general.flatpak:
+    name:
+      - com.mastermindzh.tidal-hifi
+    state: present
+
+- name: Install Cryptomator
+  become: true
+  tags:
     - cryptomator
   community.general.flatpak:
-    name: 
+    name:
       - org.cryptomator.Cryptomator
     state: present
 
-
-- name: Install DBeaver 
+- name: Install DBeaver
   become: true
-  tags: 
+  tags:
     - dbeaver
   community.general.flatpak:
-    name: 
+    name:
       - io.dbeaver.DBeaverCommunity
     state: present
