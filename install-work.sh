@@ -1,1 +1,1 @@
-ansible-playbook local.yml --ask-vault-password --ask-become-pass --tags all,work
+ansible-playbook local.yml --ask-become-pass --tags all,work
