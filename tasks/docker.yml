@@ -1,21 +1,76 @@
-- name: Install docker
-  become: true
-  package:
-    name:
-      - docker
-      - docker-compose
-    state: latest
+# - name: Install docker
+#   become: true
+#   package:
+#     name:
+#       - docker
+#       - docker-compose
+#     state: latest
+#
+# - name: Start docker service
+#   become: true
+#   systemd:
+#     name: docker
+#     state: started
+#     enabled: true
+#
+# - name: Add the current user to the docker group
+#   become: true
+#   user:
+#     name: "{{ lookup('env', 'USER') }}"
+#     groups: docker
+#     append: yes
 
-- name: Start docker service
-  become: true
-  systemd:
-    name: docker
-    state: started
-    enabled: true
+# Looks like we don't need this since its already pre installed.
+# - name: Install dnf plugins core
+#   become: true
+#   package:
+#     name: dnf-plugins-core
+#     state: latest
 
-- name: Add the current user to the docker group
-  become: true
-  user:
-    name: "{{ lookup('env', 'USER') }}"
-    groups: docker
-    append: yes
+# - name: Add docker repo
+#   become: true
+#   tags:
+#     - docker
+#   ansible.builtin.dnf:
+#     name: docker
+#     enablerepo: https://download.docker.com/linux/fedora/docker-ce.repo
+#     state: latest
+
+# - name: Add docker repository
+#   become: true
+#   tags:
+#     - docker
+#   ansible.builtin.yum_repository:
+#     name: docker-ce
+#     description: Docker repo
+#     baseurl: https://download.docker.com/linux/fedora/docker-ce.repo
+#
+# - name: Ensure the docker repository is enabled
+#   become: true
+#   tags:
+#     - docker
+#   community.general.dnf_config_manager:
+#     name: docker-ce-stable
+#     state: enabled
+#
+# - name: Install docker
+#   become: true
+#   tags:
+#     - docker
+#   package:
+#     name:
+#       - docker-ce
+#       - docker-ce-cli
+#       - containerd.io
+#       - docker-buildx-plugin
+#       - docker-compose-plugin
+#     state: latest
+#
+# - name: Start docker service
+#   become: true
+#   tags:
+#     - docker
+#   systemd:
+#     name: docker
+#     state: started
+#     enabled: true
