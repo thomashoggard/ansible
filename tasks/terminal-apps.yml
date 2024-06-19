@@ -10,7 +10,7 @@
   become: true
   package:
     name:
-      - alacritty
+      - wezterm
       - neovim
       - fzf
       - ripgrep
