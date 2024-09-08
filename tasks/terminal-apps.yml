@@ -16,4 +16,6 @@
       - ripgrep
       - jq
       - lazygit
+      - luarocks
+      - btop
     state: latest
