@@ -5,12 +5,3 @@
     update_only: true
     update_cache: true
   when: ansible_distribution == "Fedora"
-
-- name: Install updates (Arch)
-  tags: always
-  become: true
-  pacman:
-    upgrade: true
-    update_cache: true
-  when: ansible_distribution == "Archlinux"
-

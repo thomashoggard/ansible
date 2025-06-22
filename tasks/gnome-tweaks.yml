@@ -1,0 +1,5 @@
+- name: Install adwaita theme for flatpaks
+  become: true
+  package:
+    name: adw-gtk3-theme
+    state: latest

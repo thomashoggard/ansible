@@ -7,6 +7,15 @@
       - it.mijorus.gearlever
     state: present
 
+- name: Install Flatseal (flatpak util)
+  become: true
+  tags:
+    - flatseal
+  community.general.flatpak:
+    name:
+      - com.github.tchx84.Flatseal
+    state: present
+
 - name: Install Google Chrome
   become: true
   tags:
@@ -34,15 +43,6 @@
       - com.protonvpn.www
     state: present
 
-# - name: Install 1Password
-#   become: true
-#   tags:
-#     - 1password
-#   community.general.flatpak:
-#     name:
-#       - https://downloads.1password.com/linux/flatpak/1Password.flatpakref
-#     state: present
-
 - name: Install Obsidian
   become: true
   tags:
@@ -50,33 +50,6 @@
   community.general.flatpak:
     name:
       - md.obsidian.Obsidian
-    state: present
-
-- name: Install Arch specific packages
-  become: true
-  package:
-    name:
-      - timeshift
-      - timeshift-autosnap
-    state: latest
-  when: ansible_distribution == "Archlinux"
-
-- name: Install GNUCash
-  become: true
-  tags:
-    - gnucash
-  community.general.flatpak:
-    name:
-      - org.gnucash.GnuCash
-    state: present
-
-- name: Install VLC
-  become: true
-  tags:
-    - vlc
-  community.general.flatpak:
-    name:
-      - org.videolan.VLC
     state: present
 
 - name: Tidal Hi-Fi
@@ -113,4 +86,13 @@
   community.general.flatpak:
     name:
       - com.usebruno.Bruno
+    state: present
+
+- name: Install Gnome Extension Manager
+  become: true
+  tags:
+    - gnome
+  community.general.flatpak:
+    name:
+      - com.mattjakeman.ExtensionManager
     state: present

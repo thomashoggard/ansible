@@ -2,11 +2,11 @@
   pre_tasks:
     - import_tasks: tasks/update-system.yml
   tasks:
-    - import_tasks: tasks/ssh.yml
+    # - import_tasks: tasks/ssh.yml
     - import_tasks: tasks/update-ansible-repo-origin.yml
     - import_tasks: tasks/dotfiles.yml
     - import_tasks: tasks/git.yml
-    - import_tasks: tasks/zsh.yml
+    - import_tasks: tasks/shell.yml
     - import_tasks: tasks/tmux.yml
     - import_tasks: tasks/terminal-apps.yml
     - import_tasks: tasks/snapper.yml

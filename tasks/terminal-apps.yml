@@ -1,3 +1,11 @@
+- name: Enable wezterm copr repo
+  tags:
+    - fedora
+  become: true
+  community.general.copr:
+    state: enabled
+    name: wezfurlong/wezterm-nightly
+
 - name: Enable lazygit copr repo
   tags:
     - fedora
@@ -10,7 +18,6 @@
   become: true
   package:
     name:
-      - wezterm
       - neovim
       - fzf
       - ripgrep
@@ -18,4 +25,5 @@
       - lazygit
       - luarocks
       - btop
+      - wezterm
     state: latest

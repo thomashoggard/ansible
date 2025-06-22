@@ -1,0 +1,19 @@
+- name: Enable starship copr repo
+  tags:
+    - fedora
+  become: true
+  community.general.copr:
+    state: enabled
+    name: atim/starship
+
+- name: Install fish
+  become: true
+  package:
+    name:
+      - fish
+      - starship
+    state: latest
+
+- name: Change shell to fish
+  shell: "chsh -s $(which fish) {{ lookup('env', 'USER') }}"
+  become: true

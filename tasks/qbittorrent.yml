@@ -3,15 +3,3 @@
   package:
     name: qbittorrent
     state: latest
-
-- name: Install jackett
-  become: true
-  package:
-    name: jackett
-    state: latest
-
-- name: Start jackett service
-  systemd:
-    name: jackett.service
-    state: started
-    enabled: true
