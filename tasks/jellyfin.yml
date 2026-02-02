@@ -1,17 +1,23 @@
 # Jellyfin installation is untested
 - name: Install jellyfin
   become: true
+  tags:
+    - jellyfin
   package:
     name:
       - jellyfin
     state: latest
 
 - name: Start jellyfin service
+  tags:
+    - jellyfin
   systemd:
     name: jellyfin.service
     state: started
     enabled: true
 
 - name: Grant read permissions to media drive
+  tags:
+    - jellyfin
   shell: "setfacl -m user:jellyfin:rxw {{ lookup('env', 'USER') }}"
   become: true
