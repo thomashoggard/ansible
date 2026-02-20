@@ -26,4 +26,5 @@
       - luarocks
       - btop
       - wezterm
+      - restic
     state: latest
